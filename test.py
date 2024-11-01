@@ -11,7 +11,7 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 def test(model, tokenizer):
     input = tokenizer(
         # ["He likes", "The little", "He is", "She likes", "We had", "They took", "The ice ", "The house", "They are", The birds"],
-        ["he", "I", "She"],
+        ["he", "I", "She", "The dog", "My mom", "I love", "We had", "He is", "The dpg", "My favorite"],
         padding=True,
         return_tensors="pt",
         truncation=True,
@@ -46,12 +46,12 @@ tokenizer.pad_token = tokenizer.eos_token
 
 
 model = GPT2().to(device)
-model.load_state_dict(torch.load('pretrained/1730453676.006962.pt'))
+model.load_state_dict(torch.load('pretrained/1730455984.8348985.pt'))
 
 
 output = test(model, tokenizer)
-
-print(output)
+for s in output:
+    print(s)
 
 
 
